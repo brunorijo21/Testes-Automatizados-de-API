@@ -13,37 +13,31 @@ Este projeto realiza testes automatizados na API pública [Restful API](https://
 ---
 
 ## Estrutura do Projeto
+📁 cypress/ <br>
+ ┣ 📁 e2e/<br>
+ ┃ ┗ api.cy.js<br>
+ ┣ 📁 support/<br>
+ ┃ ┣ commands.js<br>
+ ┃ ┗ e2e.js<br>
+cypress.config.js
 
--
 
 ##  Configuração
 
--  e2e <br>
-    |---test
-
-- reports<br>
-    |--asserts
-
-- support<br>
-    |-- Commands
-
-    |--e2e  
-
-- cypress.config.js
-
-
-
-### Instalação
-
-
 - npm install
 
+- npm install cypress
+
+- npm install cypress-mochawesome-reporter --save-dev
 
 ## Executar os testes
 
 - npx cypress run
 
-Executar em modo interativo
+- npx mochawesome-report-generator report.json 
+
+
+## Executar em modo interativo
 
 - npx cypress open
 
