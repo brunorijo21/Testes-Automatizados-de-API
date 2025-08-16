@@ -1,0 +1,181 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-08-16T18:30:08.774Z",
+    "end": "2025-08-16T18:30:11.410Z",
+    "duration": 2636,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "ffdd0407-3f06-42e4-aa30-d38625e3757e",
+      "title": "",
+      "fullFile": "cypress\\e2e\\api.cy.js",
+      "file": "cypress\\e2e\\api.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "2608c659-3180-46b7-8e58-50d93c593447",
+          "title": "Testes da API RESTful com comandos Cypress",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "POST - Criar novo objeto",
+              "fullTitle": "Testes da API RESTful com comandos Cypress POST - Criar novo objeto",
+              "timedOut": null,
+              "duration": 590,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const payload = {\n  name: 'Notebook Dell',\n  data: {\n    ram: '16GB',\n    ssd: '512GB'\n  }\n};\ncy.createObject(payload).then(response => {\n  expect(response.status).to.eq(200);\n  expect(response.body.name).to.eq(payload.name);\n  createdId = response.body.id;\n});",
+              "err": {},
+              "uuid": "611cae91-3562-492e-8b63-b9f07f78c6b0",
+              "parentUUID": "2608c659-3180-46b7-8e58-50d93c593447",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "GET - Buscar objeto criado",
+              "fullTitle": "Testes da API RESTful com comandos Cypress GET - Buscar objeto criado",
+              "timedOut": null,
+              "duration": 436,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.getObject(createdId).then(response => {\n  expect(response.status).to.eq(200);\n  expect(response.body.id).to.eq(createdId);\n});",
+              "err": {},
+              "uuid": "6450a017-75b7-48f5-b584-525999696efb",
+              "parentUUID": "2608c659-3180-46b7-8e58-50d93c593447",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "PUT - Atualizar objeto",
+              "fullTitle": "Testes da API RESTful com comandos Cypress PUT - Atualizar objeto",
+              "timedOut": null,
+              "duration": 459,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const updatedPayload = {\n  name: 'Notebook Dell XPS',\n  data: {\n    ram: '32GB',\n    ssd: '1TB'\n  }\n};\ncy.updateObject(createdId, updatedPayload).then(response => {\n  expect(response.status).to.eq(200);\n  expect(response.body.name).to.eq(updatedPayload.name);\n});",
+              "err": {},
+              "uuid": "3a1c02e4-727b-42bc-968b-46fd15a2e4aa",
+              "parentUUID": "2608c659-3180-46b7-8e58-50d93c593447",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "DELETE - Remover objeto",
+              "fullTitle": "Testes da API RESTful com comandos Cypress DELETE - Remover objeto",
+              "timedOut": null,
+              "duration": 519,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.deleteObject(createdId).then(response => {\n  expect(response.status).to.eq(200);\n});",
+              "err": {},
+              "uuid": "4e7d912c-8aa1-460a-b99a-a02cadbef6f2",
+              "parentUUID": "2608c659-3180-46b7-8e58-50d93c593447",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "GET - Objeto removido não deve existir",
+              "fullTitle": "Testes da API RESTful com comandos Cypress GET - Objeto removido não deve existir",
+              "timedOut": null,
+              "duration": 477,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.getObjectFail(createdId).then(response => {\n  expect(response.status).to.eq(404);\n});",
+              "err": {},
+              "uuid": "37af8776-6fcc-40fd-b750-8e3d2bfea823",
+              "parentUUID": "2608c659-3180-46b7-8e58-50d93c593447",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "611cae91-3562-492e-8b63-b9f07f78c6b0",
+            "6450a017-75b7-48f5-b584-525999696efb",
+            "3a1c02e4-727b-42bc-968b-46fd15a2e4aa",
+            "4e7d912c-8aa1-460a-b99a-a02cadbef6f2",
+            "37af8776-6fcc-40fd-b750-8e3d2bfea823"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2481,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
