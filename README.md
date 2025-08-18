@@ -4,7 +4,7 @@ Este projeto realiza testes automatizados na API pública [Restful API](https://
 
 ---
 
-## 🚀 Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 - [Cypress](https://www.cypress.io/) — Framework de testes end-to-end
 - [Mochawesome](https://github.com/adamgruber/mochawesome) — Gerador de relatórios em HTML e JSON
