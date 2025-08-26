@@ -53,7 +53,6 @@ export function generateValidPayload() {
         }
     };
 }
-
 export function generateInvalidTypesPayload() {
 
     return {
