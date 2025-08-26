@@ -1,0 +1,186 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 4,
+    "pending": 0,
+    "failures": 1,
+    "start": "2025-08-26T15:57:19.590Z",
+    "end": "2025-08-26T15:57:23.423Z",
+    "duration": 3833,
+    "testsRegistered": 5,
+    "passPercent": 80,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "602ec9bf-423a-4e1d-898e-6a2865df6f36",
+      "title": "",
+      "fullFile": "cypress\\e2e\\test\\api\\positiveScenarios.cy.js",
+      "file": "cypress\\e2e\\test\\api\\positiveScenarios.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "b7dd0641-08c9-4a7f-bf2b-1ac9b04547cb",
+          "title": "Cenários positivos da API RestFull",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "POST - Criar novo objeto dinâmico",
+              "fullTitle": "Cenários positivos da API RestFull POST - Criar novo objeto dinâmico",
+              "timedOut": null,
+              "duration": 582,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.allure().severity('critical');\ncy.allure().description(`\n  ## Cenário: Criar novo objeto dinâmico\n  Dado que o cliente deseja registrar um novo objeto na base de dados\\n  \n  Quando ele envia uma requisição POST com dados válidos gerados dinamicamente\\n  \n  Então a API deve retornar um status 200 (OK)\\n  \n  E incluir no corpo da resposta os dados enviados e o ID do novo objeto\\n\n`);\noriginalPayload = (0, _generador.generateValidPayload)();\ncy.createObject(originalPayload).then(response => {\n  expect(response.status).to.eq(200);\n  expect(response.body.name).to.eq(originalPayload.name);\n  createdId = response.body.id;\n});",
+              "err": {},
+              "uuid": "d9cb6d0f-b765-4561-9692-aefc72852b0f",
+              "parentUUID": "b7dd0641-08c9-4a7f-bf2b-1ac9b04547cb",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "GET - Buscar objeto criado",
+              "fullTitle": "Cenários positivos da API RestFull GET - Buscar objeto criado",
+              "timedOut": null,
+              "duration": 590,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.allure().severity('critical');\ncy.allure().description(`\n  ## Cenário: Buscar objeto criado\nDado que um objeto foi previamente criado via requisição POST\\n\nQuando o cliente envia uma requisição GET para buscar esse objeto pelo ID\\n\nEntão a API deve retornar status 200(OK)\\n\nE o corpo da resposta deve conter os dados corretos do objeto criado\\n\n`);\ncy.getObject(createdId).then(response => {\n  expect(response.status).to.eq(200);\n  expect(response.body.id).to.eq(createdId);\n  expect(response.body.name).to.eq(originalPayload.name);\n});",
+              "err": {},
+              "uuid": "f1fba400-35ca-4211-b29b-eb5a6a91da19",
+              "parentUUID": "b7dd0641-08c9-4a7f-bf2b-1ac9b04547cb",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "PUT - Atualizar objeto com novos dados",
+              "fullTitle": "Cenários positivos da API RestFull PUT - Atualizar objeto com novos dados",
+              "timedOut": null,
+              "duration": 853,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.allure().severity('critical');\ncy.allure().description(`\n\n   ## Cenário: Atualizar objeto com novos dados válidos\nDado que um objeto já foi criado na base de dados\\n\nQuando eu envio uma requisição PUT com novos dados\\n\nEntão a API deve retornar o status 200\\n\nE o corpo da resposta deve conter os dados atualizados\\n\nupdatedPayload = generateValidPayload();\n`);\ncy.updateObject(createdId, updatedPayload).then(response => {\n  expect(response.status).to.eq(200);\n  expect(response.body.name).to.eq(updatedPayload.name);\n});",
+              "err": {
+                "message": "CypressError: `cy.request()` failed on:\n\nhttps://api.restful-api.dev/objects/ff8081819782e69e0198e719129d3bca\n\nThe response we received from your web server was:\n\n  > 400: Bad Request\n\nThis was considered a failure because the status code was not `2xx` or `3xx`.\n\nIf you do not want status codes to cause failures pass the option: `failOnStatusCode: false`\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: PUT\nURL: https://api.restful-api.dev/objects/ff8081819782e69e0198e719129d3bca\nHeaders: {\n  \"Connection\": \"keep-alive\",\n  \"user-agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/14.5.4 Chrome/130.0.6723.137 Electron/33.2.1 Safari/537.36\",\n  \"accept\": \"*/*\",\n  \"accept-encoding\": \"gzip, deflate\",\n  \"content-length\": 0\n}\n\n-----------------------------------------------------------\n\nThe response we got was:\n\nStatus: 400 - Bad Request\nHeaders: {\n  \"date\": \"Tue, 26 Aug 2025 15:57:18 GMT\",\n  \"content-type\": \"application/json\",\n  \"transfer-encoding\": \"chunked\",\n  \"connection\": \"keep-alive\",\n  \"server\": \"cloudflare\",\n  \"nel\": \"{\\\"report_to\\\":\\\"cf-nel\\\",\\\"success_fraction\\\":0.0,\\\"max_age\\\":604800}\",\n  \"vary\": \"Origin, Access-Control-Request-Method, Access-Control-Request-Headers\",\n  \"cf-cache-status\": \"DYNAMIC\",\n  \"report-to\": \"{\\\"group\\\":\\\"cf-nel\\\",\\\"max_age\\\":604800,\\\"endpoints\\\":[{\\\"url\\\":\\\"https://a.nel.cloudflare.com/report/v4?s=U8p1x0rzLBzS8FJL9TCQXL38gjqDn3iF8dpM2sQbP1hKVgEHXcsNLxss3Gx%2FjKJBfksFIXR5N7KG98DErwm9RqrkmWENm7yHOWNKBwDXfLCjiHc%3D\\\"}]}\",\n  \"cf-ray\": \"9754862bbfb726aa-MAN\",\n  \"alt-svc\": \"h3=\\\":443\\\"; ma=86400\"\n}\nBody: {\n  \"error\": \"400 Bad Request. If you are trying to create or update the data, potential issue is that you are sending incorrect body json or it is missing at all.\"\n}\n\n\nhttps://on.cypress.io/request",
+                "estack": "CypressError: `cy.request()` failed on:\n\nhttps://api.restful-api.dev/objects/ff8081819782e69e0198e719129d3bca\n\nThe response we received from your web server was:\n\n  > 400: Bad Request\n\nThis was considered a failure because the status code was not `2xx` or `3xx`.\n\nIf you do not want status codes to cause failures pass the option: `failOnStatusCode: false`\n\n-----------------------------------------------------------\n\nThe request we sent was:\n\nMethod: PUT\nURL: https://api.restful-api.dev/objects/ff8081819782e69e0198e719129d3bca\nHeaders: {\n  \"Connection\": \"keep-alive\",\n  \"user-agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Cypress/14.5.4 Chrome/130.0.6723.137 Electron/33.2.1 Safari/537.36\",\n  \"accept\": \"*/*\",\n  \"accept-encoding\": \"gzip, deflate\",\n  \"content-length\": 0\n}\n\n-----------------------------------------------------------\n\nThe response we got was:\n\nStatus: 400 - Bad Request\nHeaders: {\n  \"date\": \"Tue, 26 Aug 2025 15:57:18 GMT\",\n  \"content-type\": \"application/json\",\n  \"transfer-encoding\": \"chunked\",\n  \"connection\": \"keep-alive\",\n  \"server\": \"cloudflare\",\n  \"nel\": \"{\\\"report_to\\\":\\\"cf-nel\\\",\\\"success_fraction\\\":0.0,\\\"max_age\\\":604800}\",\n  \"vary\": \"Origin, Access-Control-Request-Method, Access-Control-Request-Headers\",\n  \"cf-cache-status\": \"DYNAMIC\",\n  \"report-to\": \"{\\\"group\\\":\\\"cf-nel\\\",\\\"max_age\\\":604800,\\\"endpoints\\\":[{\\\"url\\\":\\\"https://a.nel.cloudflare.com/report/v4?s=U8p1x0rzLBzS8FJL9TCQXL38gjqDn3iF8dpM2sQbP1hKVgEHXcsNLxss3Gx%2FjKJBfksFIXR5N7KG98DErwm9RqrkmWENm7yHOWNKBwDXfLCjiHc%3D\\\"}]}\",\n  \"cf-ray\": \"9754862bbfb726aa-MAN\",\n  \"alt-svc\": \"h3=\\\":443\\\"; ma=86400\"\n}\nBody: {\n  \"error\": \"400 Bad Request. If you are trying to create or update the data, potential issue is that you are sending incorrect body json or it is missing at all.\"\n}\n\n\nhttps://on.cypress.io/request\n    at <unknown> (https://api.restful-api.dev/__cypress/runner/cypress_runner.js:136469:72)\n    at tryCatcher (https://api.restful-api.dev/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (https://api.restful-api.dev/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (https://api.restful-api.dev/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (https://api.restful-api.dev/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (https://api.restful-api.dev/__cypress/runner/cypress_runner.js:1671:18)\n    at _drainQueueStep (https://api.restful-api.dev/__cypress/runner/cypress_runner.js:2377:12)\n    at _drainQueue (https://api.restful-api.dev/__cypress/runner/cypress_runner.js:2370:9)\n    at Async._drainQueues (https://api.restful-api.dev/__cypress/runner/cypress_runner.js:2386:5)\n    at Async.drainQueues (https://api.restful-api.dev/__cypress/runner/cypress_runner.js:2256:14)\nFrom Your Spec Code:\n    at Context.eval (webpack://api/./cypress/support/commands.js:10:14)\n    at wrapped (https://api.restful-api.dev/__cypress/runner/cypress_runner.js:141663:43)",
+                "diff": null
+              },
+              "uuid": "f77cd836-ae5b-4178-908a-c61c4e97409f",
+              "parentUUID": "b7dd0641-08c9-4a7f-bf2b-1ac9b04547cb",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "DELETE - Remover objeto",
+              "fullTitle": "Cenários positivos da API RestFull DELETE - Remover objeto",
+              "timedOut": null,
+              "duration": 569,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.allure().severity('critical');\ncy.allure().description(`\n\n## Cenário: Remover objeto com sucesso\nDado que um objeto foi criado e está disponível na base\\n\nQuando eu envio uma requisição para o endpoint\"\\n\nEntão a API deve retornar o status 200\\n\nE o objeto não deve mais ser encontrado em consultas futuras\n`);\ncy.deleteObject(createdId).then(response => {\n  expect(response.status).to.eq(200);\n});",
+              "err": {},
+              "uuid": "32bc0a2e-68e4-4cd3-b5a9-222660fdac96",
+              "parentUUID": "b7dd0641-08c9-4a7f-bf2b-1ac9b04547cb",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "GET - Verificar que o objeto removido não existe",
+              "fullTitle": "Cenários positivos da API RestFull GET - Verificar que o objeto removido não existe",
+              "timedOut": null,
+              "duration": 536,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.allure().severity('normal');\ncy.allure().description(`\n  ## Cenário: Verificar que o objeto removido não existe\n\n  Dado que um objeto foi previamente criado e removido da base de dados\\n  \n  Quando o cliente envia uma requisição GET para o endpoint\\` \\n\n  Então a API deve retornar status **404 (Not Found)** \\n \n  E o corpo da resposta deve indicar que o objeto não foi encontrado\\n\n `);\ncy.getObjectFail(createdId).then(response => {\n  expect(response.status).to.eq(404);\n});",
+              "err": {},
+              "uuid": "ba07364a-3033-4fa8-977a-79be7fc1b193",
+              "parentUUID": "b7dd0641-08c9-4a7f-bf2b-1ac9b04547cb",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "d9cb6d0f-b765-4561-9692-aefc72852b0f",
+            "f1fba400-35ca-4211-b29b-eb5a6a91da19",
+            "32bc0a2e-68e4-4cd3-b5a9-222660fdac96",
+            "ba07364a-3033-4fa8-977a-79be7fc1b193"
+          ],
+          "failures": [
+            "f77cd836-ae5b-4178-908a-c61c4e97409f"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 3130,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

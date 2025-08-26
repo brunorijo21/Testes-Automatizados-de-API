@@ -1,0 +1,181 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-08-26T16:04:23.180Z",
+    "end": "2025-08-26T16:04:27.604Z",
+    "duration": 4424,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "9774a6b8-b595-47c8-be3d-5320b11e3469",
+      "title": "",
+      "fullFile": "cypress\\e2e\\test\\api\\negativeScenarios.cy.js",
+      "file": "cypress\\e2e\\test\\api\\negativeScenarios.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "c51bd0f3-89e2-4aae-bb12-61034b96c34f",
+          "title": "Cenários Negativos API RestFull",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "POST - Criar objeto com campos ausentes",
+              "fullTitle": "Cenários Negativos API RestFull POST - Criar objeto com campos ausentes",
+              "timedOut": null,
+              "duration": 1885,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.allure().story('Validação de campos obrigatórios');\ncy.allure().severity('critical');\ncy.allure().description(`\n  ## Cenário: Criar objeto com campos ausentes\n  Dado que o cliente deseja criar um novo objeto via API\\n\n  Quando ele envia uma requisição POST com campos obrigatórios ausentes\\n\n  Então a API deve retornar um erro 400 (Bad Request)\\n\n  E informar quais campos estão faltando na resposta \\n\n`);\nconst payload = (0, _generador.generateMissingFieldsPayload)();\ncy.request({\n  method: 'POST',\n  url: `${Cypress.config('baseUrl')}${Cypress.env('apiPath')}`,\n  body: payload,\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.status).to.eq(200);\n  expect(response.body).to.have.property('name', payload.name);\n});",
+              "err": {},
+              "uuid": "159f72f6-efae-4bea-9594-a7cc28b75d8b",
+              "parentUUID": "c51bd0f3-89e2-4aae-bb12-61034b96c34f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "GET - Buscar objeto com Id inexistente",
+              "fullTitle": "Cenários Negativos API RestFull GET - Buscar objeto com Id inexistente",
+              "timedOut": null,
+              "duration": 506,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.allure().severity('normal');\ncy.allure().story('Validação de formato de ID');\ncy.allure().description(`\n  ## Cenário: Buscar objeto com ID inexistente\n  Dado que o cliente deseja consultar um objeto específico\\n  \n  Quando ele envia uma requisição GET com um ID que não existe no banco\\n  \n  Então a API deve retornar um erro 404 (Not Found)\\n  \n  E informar que o objeto não foi localizado\\n\n`);\nconst id = (0, _generador.generateNonexistentId)();\ncy.getObjectFail(id).then(response => {\n  expect(response.status).to.eq(404);\n});",
+              "err": {},
+              "uuid": "2a823b30-4710-46f7-bbe6-1027c5fe2afe",
+              "parentUUID": "c51bd0f3-89e2-4aae-bb12-61034b96c34f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "GET - Buscar objeto com Id mal formatado",
+              "fullTitle": "Cenários Negativos API RestFull GET - Buscar objeto com Id mal formatado",
+              "timedOut": null,
+              "duration": 505,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.allure().severity('normal');\ncy.allure().description(`\n  ## Cenário: Buscar objeto com ID mal formatado\n  Dado que o cliente deseja consultar um objeto específico\\n  \n  Quando ele envia uma requisição GET com um ID mal formatado (ex: string, símbolo ou valor nulo)\\n  \n  Então a API deve retornar um erro 400 (Bad Request)\\n  \n  E informar que o formato do ID é inválido\\n\n`);\nconst id = (0, _generador.generateInvalidId)();\ncy.getObjectFail(id).then(response => {\n  expect(response.status).to.be.oneOf([400, 404]);\n});",
+              "err": {},
+              "uuid": "c211d434-d485-499e-a5b4-9530a20d7020",
+              "parentUUID": "c51bd0f3-89e2-4aae-bb12-61034b96c34f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "PUT - Atualizar objeto com Id inválido e payload válido",
+              "fullTitle": "Cenários Negativos API RestFull PUT - Atualizar objeto com Id inválido e payload válido",
+              "timedOut": null,
+              "duration": 497,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.allure().severity('normal');\ncy.allure().description(`\n  ## Cenário: Buscar objeto com ID mal formatado\n  Dado que o cliente deseja consultar um objeto específico\\n  \n  Quando ele envia uma requisição GET com um ID mal formatado (ex: string, símbolo ou valor nulo)\\n  \n  Então a API deve retornar um erro 400 (Bad Request)\\n  \n  E informar que o formato do ID é inválido\\n\n`);\nconst id = (0, _generador.generateInvalidId)();\nconst payload = (0, _generador.generateMissingFieldsPayload)();\ncy.request({\n  method: 'PUT',\n  url: `${Cypress.config('baseUrl')}${Cypress.env('apiPath')}/${id}`,\n  body: payload,\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.status).to.be.oneOf([400, 404]);\n});",
+              "err": {},
+              "uuid": "54c6d1f4-0ea0-496a-be45-673deb5c80e4",
+              "parentUUID": "c51bd0f3-89e2-4aae-bb12-61034b96c34f",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "DELETE - Remover objeto com Id inválido",
+              "fullTitle": "Cenários Negativos API RestFull DELETE - Remover objeto com Id inválido",
+              "timedOut": null,
+              "duration": 487,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.allure().severity('normal');\ncy.allure().description(`\n  ## Cenário: Remover objeto com ID inválido\n  Dado que o cliente deseja remover um objeto existente\\n  \n  E fornece um ID inválido (mal formatado ou inexistente)\\n  \n  Quando ele envia uma requisição DELETE para o endpoint com esse ID\\n  \n  Então a API deve retornar um erro apropriado (400 ou 404)\\n  \n  E informar que o objeto não foi encontrado ou que o ID é inválido\\n\n `);\nconst id = (0, _generador.generateInvalidId)();\ncy.request({\n  method: 'DELETE',\n  url: `${Cypress.config('baseUrl')}${Cypress.env('apiPath')}/${id}`,\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.status).to.be.oneOf([400, 404]);\n});",
+              "err": {},
+              "uuid": "89cf9169-a96f-4bfe-96b1-c4dbbf66dd52",
+              "parentUUID": "c51bd0f3-89e2-4aae-bb12-61034b96c34f",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "159f72f6-efae-4bea-9594-a7cc28b75d8b",
+            "2a823b30-4710-46f7-bbe6-1027c5fe2afe",
+            "c211d434-d485-499e-a5b4-9530a20d7020",
+            "54c6d1f4-0ea0-496a-be45-673deb5c80e4",
+            "89cf9169-a96f-4bfe-96b1-c4dbbf66dd52"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3880,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

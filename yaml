@@ -18,7 +18,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: mochawesome-report
-          path: cypress/reports
+          path: cypress/reports/mochawesome-report
 
   publish-npm:
     needs: build-and-test
@@ -32,4 +32,4 @@ jobs:
       - run: npm ci
       - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
