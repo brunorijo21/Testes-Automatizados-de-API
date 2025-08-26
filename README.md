@@ -6,21 +6,28 @@ Este projeto realiza testes automatizados na API pública [Restful API](https://
 
 ## Tecnologias Utilizadas
 
-- [Cypress](https://www.cypress.io/) — Framework de testes end-to-end
-- [Mochawesome](https://github.com/adamgruber/mochawesome) — Gerador de relatórios em HTML e JSON
-- Node.js — Ambiente de execução JavaScript
+Cypress — Framework de testes end-to-end  
+Mochawesome — Gerador de relatórios em HTML e JSON  
+Allure — Plataforma avançada de relatórios com visual interativo e integração com CI/CD  
+Node.js — Ambiente de execução JavaScript  
 
 ---
 
 ## Estrutura do Projeto
-📁 cypress/ <br>
- ┣ 📁 e2e/<br>
- ┃ ┗ api.cy.js<br>
- ┣ 📁 support/<br>
- ┃ ┣ commands.js<br>
- ┃ ┗ e2e.js<br>
-cypress.config.js
+```plaintext
+cypress/
+├── e2e/<br>
+│   └── api/<br>                     # Pasta dedicada aos testes de API
+│       ├── negativeScenarios.cy.js # Testes negativos (validações, erros)
+│       ├── positivoScenarios.cy.js # Testes positivos (fluxos esperados)
+├── support/
+│   ├── commands.js                 # Comandos customizados do Cypress
+│   ├── e2e.js                      # Arquivo de suporte global para testes
+│   └── generator.js               # Geração de dados dinâmicos (ex: faker)
+cypress.config.js                  # Configuração principal do Cypress
+package.json                       # Dependências e scripts do projeto
 
+```` 
 
 ##  Configuração
 
@@ -30,11 +37,79 @@ cypress.config.js
 
 - npm install cypress-mochawesome-reporter --save-dev
 
+- npm install --save-dev husky
+
+- npx husky init
+
+- Commits personalizados:
+
+Commitlint + Emojis + Conventional Commits (npm install --save-dev @commitlint/cli @commitlint/config-conventional)
+
+### Para realizar o commit executar o seguinte comando: 
+
+- npm run commit
+
+## Exemplos de funções usadas dinâmicas :
+
+Generador.js
+
+export function generateValidPayload() {
+
+    return {
+        name: faker.commerce.productName(),
+        data: {
+            ram: `${faker.number.int({ min: 4, max: 64 })}GB`,
+            ssd: `${faker.number.int({ min: 128, max: 2048 })}GB`
+        }
+    };
+}
+
+export function generateInvalidTypesPayload() {
+
+    return {
+        name: faker.number.int(), // deveria ser string
+        data: {
+            ram: faker.internet.email(), // tipo errado
+            ssd: null
+        }
+    };
+}
+
+Commands:
+
+Cypress.Commands.add('createObject', (payload) => {
+
+    return cy.request('POST', `${Cypress.config('baseUrl')}${Cypress.env('apiPath')}`, payload);
+});
+
+commitlint.config.js:  Nesse arquivo pode ser alterado os emotions de acordo a necessidade 
+```bash
+
+module.exports = {
+  extends: ['@commitlint/config-conventional'],
+  rules: {
+    'type-enum': [
+      2,
+      'always',
+      ['feat', 'fix', 'docs', 'style', 'refactor', 'test', 'chore']
+    ],
+    'header-pattern': [
+      2,
+      'always',
+      /^(\p{Emoji_Presentation}?\s)?(feat|fix|docs|style|refactor|test|chore)(\(.+\))?: .+$/u
+    ],
+    'header-max-length': [2, 'always', 100]
+  }
+};
+
+```` 
 ## Executar os testes
 
 - npx cypress run
 
 - npx mochawesome-report-generator report.json 
+
+-  npm test :  executa os testes e gera o relatório do allure de forma automática
 
 
 ## Executar em modo interativo
@@ -43,27 +118,21 @@ cypress.config.js
 
 - Testes Implementados
 
-Os testes cobrem o endpoint /objects da API:
+# Os testes cobrem o endpoint /objects da API:
 
- - POST — Criação de objeto
+Cenários Positivos: Verificam se a API responde corretamente a requisições.
 
- - GET — Consulta de objeto criado
-
- - PUT — Atualização de objeto
-
- - DELETE — Remoção de objeto
-
- - GET após DELETE — Verificação de exclusão
+Cenários Negativos: Validam o comportamento da API diante de erros, dados inválidos ou requisições malformadas
 
 
-Variáveis de Ambiente
+## Variáveis de Ambiente
 
 baseUrl: 'https://api.restful-api.dev',
 env: {
   apiPath: '/objects'
 }
 
-*  Requisitos
+##  Requisitos
 
 Node.js ≥ 14
 
@@ -71,7 +140,7 @@ npm ≥ 6
 
 
 
- - Integração com GitHub Actions
+ ##  Integração com GitHub Actions
 
 
  Criar o arquivo de workflow

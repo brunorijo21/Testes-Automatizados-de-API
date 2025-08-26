@@ -1,0 +1,181 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-08-26T15:11:09.430Z",
+    "end": "2025-08-26T15:11:12.877Z",
+    "duration": 3447,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "c0e320b7-a8f4-4d29-a1bc-aa893ed0ce60",
+      "title": "",
+      "fullFile": "cypress\\e2e\\test\\api\\negativeScenarios.cy.js",
+      "file": "cypress\\e2e\\test\\api\\negativeScenarios.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "9d0f2360-e86c-4b7a-b635-163f516f5476",
+          "title": "Testes negativos dinâmicos da API RESTful",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "POST - Criar objeto com campos ausentes",
+              "fullTitle": "Testes negativos dinâmicos da API RESTful POST - Criar objeto com campos ausentes",
+              "timedOut": null,
+              "duration": 1344,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.allure().story('Validar no Allure');\ncy.allure().severity('critical');\nconst payload = (0, _generador.generateMissingFieldsPayload)();\ncy.request({\n  method: 'POST',\n  url: `${Cypress.config('baseUrl')}${Cypress.env('apiPath')}`,\n  body: payload,\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.status).to.eq(200);\n  expect(response.body).to.have.property('name', payload.name);\n});",
+              "err": {},
+              "uuid": "05dcf8b9-47cc-40ec-a3d3-cc2215c8c3a6",
+              "parentUUID": "9d0f2360-e86c-4b7a-b635-163f516f5476",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "GET - Buscar objeto com Id inexistente",
+              "fullTitle": "Testes negativos dinâmicos da API RESTful GET - Buscar objeto com Id inexistente",
+              "timedOut": null,
+              "duration": 470,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const id = (0, _generador.generateNonexistentId)();\ncy.getObjectFail(id).then(response => {\n  expect(response.status).to.eq(404);\n});",
+              "err": {},
+              "uuid": "d68d11a2-8cb0-402c-8d61-03af86e69bd1",
+              "parentUUID": "9d0f2360-e86c-4b7a-b635-163f516f5476",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "GET - Buscar objeto com Id mal formatado",
+              "fullTitle": "Testes negativos dinâmicos da API RESTful GET - Buscar objeto com Id mal formatado",
+              "timedOut": null,
+              "duration": 471,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const id = (0, _generador.generateInvalidId)();\ncy.getObjectFail(id).then(response => {\n  expect(response.status).to.be.oneOf([400, 404]);\n});",
+              "err": {},
+              "uuid": "7b24c5e1-fb80-46bf-bd35-2fcf2f8787b2",
+              "parentUUID": "9d0f2360-e86c-4b7a-b635-163f516f5476",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "PUT - Atualizar objeto com Id inválido e payload válido",
+              "fullTitle": "Testes negativos dinâmicos da API RESTful PUT - Atualizar objeto com Id inválido e payload válido",
+              "timedOut": null,
+              "duration": 456,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const id = (0, _generador.generateInvalidId)();\nconst payload = (0, _generador.generateMissingFieldsPayload)();\ncy.request({\n  method: 'PUT',\n  url: `${Cypress.config('baseUrl')}${Cypress.env('apiPath')}/${id}`,\n  body: payload,\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.status).to.be.oneOf([400, 404]);\n});",
+              "err": {},
+              "uuid": "e35de810-22b1-4995-93f5-81ab2811f9b6",
+              "parentUUID": "9d0f2360-e86c-4b7a-b635-163f516f5476",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "DELETE - Remover objeto com Id inválido",
+              "fullTitle": "Testes negativos dinâmicos da API RESTful DELETE - Remover objeto com Id inválido",
+              "timedOut": null,
+              "duration": 468,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const id = (0, _generador.generateInvalidId)();\ncy.request({\n  method: 'DELETE',\n  url: `${Cypress.config('baseUrl')}${Cypress.env('apiPath')}/${id}`,\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.status).to.be.oneOf([400, 404]);\n});",
+              "err": {},
+              "uuid": "30db39f2-f2a7-4d38-9fba-8f8f0abe83ab",
+              "parentUUID": "9d0f2360-e86c-4b7a-b635-163f516f5476",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "05dcf8b9-47cc-40ec-a3d3-cc2215c8c3a6",
+            "d68d11a2-8cb0-402c-8d61-03af86e69bd1",
+            "7b24c5e1-fb80-46bf-bd35-2fcf2f8787b2",
+            "e35de810-22b1-4995-93f5-81ab2811f9b6",
+            "30db39f2-f2a7-4d38-9fba-8f8f0abe83ab"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3209,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-08-26T15:27:20.364Z",
+    "end": "2025-08-26T15:27:23.950Z",
+    "duration": 3586,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "2f0482cd-1e0c-4248-8b8f-9372c489a27c",
+      "title": "",
+      "fullFile": "cypress\\e2e\\test\\api\\positiveScenarios.cy.js",
+      "file": "cypress\\e2e\\test\\api\\positiveScenarios.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "05398f95-fe80-431c-b3fe-baff7f8c3c62",
+          "title": "Testes positivos da API RESTful",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "POST - Criar novo objeto dinâmico",
+              "fullTitle": "Testes positivos da API RESTful POST - Criar novo objeto dinâmico",
+              "timedOut": null,
+              "duration": 637,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.allure().severity('critical');\noriginalPayload = (0, _generador.generateValidPayload)();\ncy.createObject(originalPayload).then(response => {\n  expect(response.status).to.eq(200);\n  expect(response.body.name).to.eq(originalPayload.name);\n  createdId = response.body.id;\n});",
+              "err": {},
+              "uuid": "7fe8540f-b7ae-4df5-8172-e8c455aa708d",
+              "parentUUID": "05398f95-fe80-431c-b3fe-baff7f8c3c62",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "GET - Buscar objeto criado",
+              "fullTitle": "Testes positivos da API RESTful GET - Buscar objeto criado",
+              "timedOut": null,
+              "duration": 777,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.allure().severity('critical');\ncy.getObject(createdId).then(response => {\n  expect(response.status).to.eq(200);\n  expect(response.body.id).to.eq(createdId);\n  expect(response.body.name).to.eq(originalPayload.name);\n});",
+              "err": {},
+              "uuid": "d8b8004a-35ad-4e0b-9629-5d039a06fa3c",
+              "parentUUID": "05398f95-fe80-431c-b3fe-baff7f8c3c62",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "PUT - Atualizar objeto com novos dados",
+              "fullTitle": "Testes positivos da API RESTful PUT - Atualizar objeto com novos dados",
+              "timedOut": null,
+              "duration": 565,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.allure().severity('critical');\nupdatedPayload = (0, _generador.generateValidPayload)();\ncy.updateObject(createdId, updatedPayload).then(response => {\n  expect(response.status).to.eq(200);\n  expect(response.body.name).to.eq(updatedPayload.name);\n});",
+              "err": {},
+              "uuid": "6cf67f9e-98f7-441c-b217-4d068308e0f3",
+              "parentUUID": "05398f95-fe80-431c-b3fe-baff7f8c3c62",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "DELETE - Remover objeto",
+              "fullTitle": "Testes positivos da API RESTful DELETE - Remover objeto",
+              "timedOut": null,
+              "duration": 522,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.allure().severity('critical');\ncy.deleteObject(createdId).then(response => {\n  expect(response.status).to.eq(200);\n});",
+              "err": {},
+              "uuid": "ba8af9d2-28fd-4889-876d-be23fe70dbd6",
+              "parentUUID": "05398f95-fe80-431c-b3fe-baff7f8c3c62",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "GET - Verificar que o objeto removido não existe",
+              "fullTitle": "Testes positivos da API RESTful GET - Verificar que o objeto removido não existe",
+              "timedOut": null,
+              "duration": 586,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.allure().severity('normal');\ncy.getObjectFail(createdId).then(response => {\n  expect(response.status).to.eq(404);\n});",
+              "err": {},
+              "uuid": "c6731d85-e1a0-4d0f-95e2-cc0ae47dfef8",
+              "parentUUID": "05398f95-fe80-431c-b3fe-baff7f8c3c62",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "7fe8540f-b7ae-4df5-8172-e8c455aa708d",
+            "d8b8004a-35ad-4e0b-9629-5d039a06fa3c",
+            "6cf67f9e-98f7-441c-b217-4d068308e0f3",
+            "ba8af9d2-28fd-4889-876d-be23fe70dbd6",
+            "c6731d85-e1a0-4d0f-95e2-cc0ae47dfef8"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3087,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
