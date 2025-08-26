@@ -37,8 +37,6 @@ package.json                       # Dependências e scripts do projeto
 
 - npm install cypress-mochawesome-reporter --save-dev
 
-- npm install --save-dev husky
-
 ## Exemplos de funções usadas dinâmicas :
 
 Generador.js
