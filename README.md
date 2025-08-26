@@ -39,16 +39,6 @@ package.json                       # Dependências e scripts do projeto
 
 - npm install --save-dev husky
 
-- npx husky init
-
-- Commits personalizados:
-
-Commitlint + Emojis + Conventional Commits (npm install --save-dev @commitlint/cli @commitlint/config-conventional)
-
-### Para realizar o commit executar o seguinte comando: 
-
-- npm run commit
-
 ## Exemplos de funções usadas dinâmicas :
 
 Generador.js
@@ -82,27 +72,7 @@ Cypress.Commands.add('createObject', (payload) => {
     return cy.request('POST', `${Cypress.config('baseUrl')}${Cypress.env('apiPath')}`, payload);
 });
 
-commitlint.config.js:  Nesse arquivo pode ser alterado os emotions de acordo a necessidade 
-```bash
 
-module.exports = {
-  extends: ['@commitlint/config-conventional'],
-  rules: {
-    'type-enum': [
-      2,
-      'always',
-      ['feat', 'fix', 'docs', 'style', 'refactor', 'test', 'chore']
-    ],
-    'header-pattern': [
-      2,
-      'always',
-      /^(\p{Emoji_Presentation}?\s)?(feat|fix|docs|style|refactor|test|chore)(\(.+\))?: .+$/u
-    ],
-    'header-max-length': [2, 'always', 100]
-  }
-};
-
-```` 
 ## Executar os testes
 
 - npx cypress run
