@@ -10,10 +10,8 @@ describe('Cenários Negativos API RestFull', () => {
         cy.allure().story('Validação de campos obrigatórios');
         cy.allure().severity('critical');
         cy.allure().description(`
-        ## Cenário: Criar objeto com campos ausentes
-
-      Dado que o cliente deseja criar um novo objeto via API\n
-      Quando ele envia uma requisição POST com campos obrigatórios ausentes\n
+      Dado que desejo criar um novo objeto via API\n
+      Quando  enviar uma requisição POST com campos obrigatórios ausentes\n
       Então a API deve retornar um erro 400 (Bad Request)\n
       E informar quais campos estão faltando na resposta \n
     `);
@@ -34,10 +32,8 @@ describe('Cenários Negativos API RestFull', () => {
         cy.allure().severity('normal');
         cy.allure().story('Validação de formato de ID');
         cy.allure().description(`
-      ## Cenário: Buscar objeto com ID inexistente
-
-      Dado que o cliente deseja consultar um objeto específico\n  
-      Quando ele envia uma requisição GET com um ID que não existe no banco\n  
+      Dado que desejo consultar um objeto específico\n  
+      Quando enviar uma requisição GET com um ID que não existe no banco\n  
       Então a API deve retornar um erro 404 (Not Found)\n  
       E informar que o objeto não foi localizado\n
     `);
@@ -51,10 +47,8 @@ describe('Cenários Negativos API RestFull', () => {
     it('GET - Buscar objeto com Id mal formatado', () => {
         cy.allure().severity('normal');
         cy.allure().description(`
-      ## Cenário: Buscar objeto com ID mal formatado
-
-      Dado que o cliente deseja consultar um objeto específico\n  
-      Quando ele envia uma requisição GET com um ID mal formatado (ex: string, símbolo ou valor nulo)\n  
+      Dado que desejo consultar um objeto específico\n  
+      Quando enviar uma requisição GET com um ID mal formatado (ex: string, símbolo ou valor nulo)\n  
       Então a API deve retornar um erro 400 (Bad Request)\n  
       E informar que o formato do ID é inválido\n
     `);
@@ -68,10 +62,8 @@ describe('Cenários Negativos API RestFull', () => {
     it('PUT - Atualizar objeto com Id inválido e payload válido', () => {
         cy.allure().severity('normal');
         cy.allure().description(`
-      ## Cenário: Buscar objeto com ID mal formatado
-
-      Dado que o cliente deseja consultar um objeto específico\n  
-      Quando ele envia uma requisição GET com um ID mal formatado (ex: string, símbolo ou valor nulo)\n  
+      Dado que desejo consultar um objeto específico\n  
+      Quando enviar uma requisição GET com um ID mal formatado (ex: string, símbolo ou valor nulo)\n  
       Então a API deve retornar um erro 400 (Bad Request)\n  
       E informar que o formato do ID é inválido\n
     `)
@@ -91,11 +83,9 @@ describe('Cenários Negativos API RestFull', () => {
     it('DELETE - Remover objeto com Id inválido', () => {
         cy.allure().severity('normal');
         cy.allure().description(`
-      ## Cenário: Remover objeto com ID inválido
-
-      Dado que o cliente deseja remover um objeto existente\n  
-      E fornece um ID inválido (mal formatado ou inexistente)\n  
-      Quando ele envia uma requisição DELETE para o endpoint com esse ID\n  
+      Dado que desejo remover um objeto existente\n  
+      E insiro um ID inválido (mal formatado ou inexistente)\n  
+      Quando enviar uma requisição DELETE para o endpoint com esse ID\n  
       Então a API deve retornar um erro apropriado (400 ou 404)\n  
       E informar que o objeto não foi encontrado ou que o ID é inválido\n
  `)
