@@ -52,7 +52,6 @@ export function generateValidPayload() {
         }
     };
 }
-
 export function generateInvalidTypesPayload() {
 
     return {
@@ -71,27 +70,7 @@ Cypress.Commands.add('createObject', (payload) => {
     return cy.request('POST', `${Cypress.config('baseUrl')}${Cypress.env('apiPath')}`, payload);
 });
 
-commitlint.config.js:  Nesse arquivo pode ser alterado os emotions de acordo a necessidade 
-```bash
 
-module.exports = {
-  extends: ['@commitlint/config-conventional'],
-  rules: {
-    'type-enum': [
-      2,
-      'always',
-      ['feat', 'fix', 'docs', 'style', 'refactor', 'test', 'chore']
-    ],
-    'header-pattern': [
-      2,
-      'always',
-      /^(\p{Emoji_Presentation}?\s)?(feat|fix|docs|style|refactor|test|chore)(\(.+\))?: .+$/u
-    ],
-    'header-max-length': [2, 'always', 100]
-  }
-};
-
-```` 
 ## Executar os testes
 
 - npx cypress run
