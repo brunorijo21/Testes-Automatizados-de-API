@@ -1,6 +1,6 @@
 #  Automação de Testes de API com Cypress
 
-Este projeto realiza testes automatizados na API pública [Restful API](https://api.restful-api.dev), utilizando **Cypress** como framework de testes e **Mochawesome** para geração de relatórios.
+Este projeto realiza testes automatizados na API pública [Restful API](https://api.restful-api.dev), utilizando **Cypress** como framework de testes e  para geração de relatórios **Allure** e **Mochawesome**.
 
 ---
 
@@ -17,15 +17,15 @@ Node.js — Ambiente de execução JavaScript
 ```plaintext
 cypress/
 ├── e2e/<br>
-│   └── api/<br>                     # Pasta dedicada aos testes de API
-│       ├── negativeScenarios.cy.js # Testes negativos (validações, erros)
-│       ├── positivoScenarios.cy.js # Testes positivos (fluxos esperados)
+│   └── api/<br>                      # Pasta dedicada aos testes de API
+│       ├── negativeScenarios.cy.js   # Testes negativos (validações, erros)
+│       ├── positiveScenarios.cy.js   # Testes positivos (fluxos esperados)
 ├── support/
-│   ├── commands.js                 # Comandos customizados do Cypress
-│   ├── e2e.js                      # Arquivo de suporte global para testes
-│   └── generator.js               # Geração de dados dinâmicos (ex: faker)
-cypress.config.js                  # Configuração principal do Cypress
-package.json                       # Dependências e scripts do projeto
+│   ├── commands.js                   # Comandos customizados do Cypress
+│   ├── e2e.js                        # Arquivo de suporte global para testes
+│   └── generator.js                  # Geração de dados dinâmicos (ex: faker)
+cypress.config.js                     # Configuração principal do Cypress
+package.json                          # Dependências e scripts do projeto
 
 ```` 
 
@@ -37,7 +37,8 @@ package.json                       # Dependências e scripts do projeto
 
 - npm install cypress-mochawesome-reporter --save-dev
 
-## Exemplos de funções usadas dinâmicas :
+
+## Exemplos de funções criadas de forma dinâmica:
 
 Generador.js
 
@@ -76,7 +77,7 @@ Cypress.Commands.add('createObject', (payload) => {
 
 - npx mochawesome-report-generator report.json 
 
--  npm test :  executa os testes e gera o relatório do allure de forma automática
+- npm test   -- Executa os testes e gera o relatório do Allure de forma automática
 
 
 ## Executar em modo interativo
@@ -89,7 +90,7 @@ Cypress.Commands.add('createObject', (payload) => {
 
 Cenários Positivos: Verificam se a API responde corretamente a requisições.
 
-Cenários Negativos: Validam o comportamento da API diante de erros, dados inválidos ou requisições malformadas
+Cenários Negativos: Validam o comportamento da API diante de erros, dados inválidos ou requisições mal formadas.
 
 
 ## Variáveis de Ambiente
@@ -110,11 +111,10 @@ npm ≥ 6
  ##  Integração com GitHub Actions
 
 
- Criar o arquivo de workflow
+### Criação do arquivo de workflow
 
-Crie o seguinte arquivo:
+Deve ser criado o seguinte arquivo:
 
-Conteúdo do workflow
 
 ```bash
 name: Cypress API Tests
