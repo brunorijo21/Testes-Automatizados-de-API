@@ -5,4 +5,7 @@ mochawesome-report/
 mochawesome.json/
 allure-report/
 allure-results/
+screenshots/
+videos/
+reports/
 
